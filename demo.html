@@ -16,8 +16,8 @@
   <style>
   body {
     /*background-color: grey;*/
-    color: white;
-    text-align: center;
+    /*color: white;*/
+    /*text-align: center;*/
     background-color: #101b2f;
   }
 
@@ -79,7 +79,7 @@
       border-collapse: collapse;*/
   }
 
-  table > tbody > tr > td,
+  /*table > tbody > tr > td,
   table > tbody > tr > th,
   .table > tfoot > tr > td,
   table > tfoot > tr > th,
@@ -88,8 +88,7 @@
     line-height: 1;
     padding: 3px;
     vertical-align: top;
-    /*border-top: 1px solid #2B3D54;*/
-  }
+  }*/
 
   .game-summary {
     padding: 10px;
@@ -308,21 +307,21 @@
       <v-container>
         <v-row>
           <v-col cols="12">
-          <v-toolbar
-            dark
-            prominent
-            src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-          >
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-toolbar
+              dark
+              prominent
+              src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+            >
+              <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-            <v-toolbar-title>Vuetify</v-toolbar-title>
+              <v-toolbar-title>Vuetify</v-toolbar-title>
 
-            <v-spacer></v-spacer>
+              <v-spacer></v-spacer>
 
-            <v-btn icon>
-              <v-icon>mdi-export</v-icon>
-            </v-btn>
-          </v-toolbar>
+              <v-btn icon>
+                <v-icon>mdi-export</v-icon>
+              </v-btn>
+            </v-toolbar>
           </v-col>
         </v-row>
 
@@ -330,87 +329,129 @@
         <v-row justify="end">
           <spacer/>
           <v-col>
-          <v-card
-            class="mx-auto"
-            max-width="344"
-            outlined
-          >
-            <v-list-item three-line>
-              <v-list-item-content>
-                <div class="text-overline mb-4">
-                  OVERLINE
-                </div>
-                <v-list-item-title class="text-h5 mb-1">
-                  Headline 5
-                </v-list-item-title>
-                <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
-              </v-list-item-content>
+            <v-card
+              class="mx-auto"
+              max-width="344"
+              outlined
+            >
+              <v-list-item three-line>
+                <v-list-item-content>
+                  <div class="text-overline mb-4">
+                    OVERLINE
+                  </div>
+                  <v-list-item-title class="text-h5 mb-1">
+                    Headline 5
+                  </v-list-item-title>
+                  <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+                </v-list-item-content>
 
-              <v-list-item-avatar
-                tile
-                size="80"
-                color="grey"
-              ></v-list-item-avatar>
-            </v-list-item>
+                <v-list-item-avatar
+                  tile
+                  size="80"
+                  color="grey"
+                ></v-list-item-avatar>
+              </v-list-item>
 
-            <v-card-actions>
-              <v-btn
-                outlined
-                rounded
-                text
-              >
-                Button
-              </v-btn>
-            </v-card-actions>
-          </v-card>
+              <v-card-actions>
+                <v-btn
+                  outlined
+                  rounded
+                  text
+                >
+                  Button
+                </v-btn>
+              </v-card-actions>
+            </v-card>
           </v-col>
         </v-row>
 
         <v-row>
-          <v-col cols="12">
-          <v-timeline
-            align-top
-            dense
-          >
-            <v-timeline-item key="test">
-
-              <v-row justify="space-between" align="center">
-                <v-col
-                  cols="2"
-                >
-                  15:26
-                </v-col>
-                <v-col cols="10" class="text-right">
-                  <v-expansion-panels>
-                    <v-expansion-panel
-                      key="i"
-                    >
-                      <v-expansion-panel-header>
-                        Item
-                      </v-expansion-panel-header>
-                      <v-expansion-panel-content>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </v-expansion-panel-content>
-                    </v-expansion-panel>
-                  </v-expansion-panels>
-                </v-col>
-              </v-row>
-            </v-timeline-item>
-
-            <v-timeline-item
-              v-for="message in messages"
-              :key="message.time"
-              :color="message.color"
-              small
+          <v-col cols="6">
+            <v-data-table
+              :headers="bo_headers"
+              :items="bo1"
+              class="elevation-1"
             >
-              <div>
-                <div class="font-weight-normal">
-                  <strong>{{ message.from }}</strong> @{{ message.time }}
+              <template v-slot:top>
+                <v-toolbar flat>
+                  <v-toolbar-title>Lions Gate</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-switch
+                    label="Show workers"
+                    class="pa-3"
+                    v-model="show_scvs"
+                    @change="toogleShowScvs"
+                  ></v-switch>
+                </v-toolbar>
+              </template>
+            </v-data-table>
+          </v-col>
+
+          <v-col cols="6">
+            <v-data-table
+              :headers="bo_headers"
+              :items="bo1"
+              class="elevation-1"
+            >
+              <template v-slot:top>
+                <v-toolbar flat>
+                  <v-toolbar-title>Fadi</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-switch
+                    label="Show workers"
+                    class="pa-3"
+                    v-model="show_scvs"
+                    @change="toogleShowScvs"
+                  ></v-switch>
+                </v-toolbar>
+              </template>
+            </v-data-table>
+          </v-col>
+
+        </v-row>
+
+
+        <v-row>
+          <v-col cols="12">
+            <v-timeline
+              align-top
+              dense
+            >
+              <v-timeline-item key="test" small>
+
+                <v-row align="center">
+                  <span slot="opposite">15:26</span>
+                  <v-col cols="12" class="text-right">
+                    <v-expansion-panels>
+                      <v-expansion-panel
+                        key="i"
+                      >
+                        <v-expansion-panel-header>
+                          Item
+                        </v-expansion-panel-header>
+                        <v-expansion-panel-content>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </v-expansion-panel-content>
+                      </v-expansion-panel>
+                    </v-expansion-panels>
+                  </v-col>
+                </v-row>
+              </v-timeline-item>
+
+              <v-timeline-item
+                v-for="message in messages"
+                :key="message.time"
+                :color="message.color"
+                small
+              >
+                <div>
+                  <div class="font-weight-normal">
+                    <strong>{{ message.from }}</strong> @{{ message.time }}
+                  </div>
+                  <div>{{ message.message }}</div>
                 </div>
-                <div>{{ message.message }}</div>
-              </div>
-            </v-timeline-item>
-          </v-timeline>
+              </v-timeline-item>
+            </v-timeline>
           </v-col>
         </v-row>
 
@@ -426,7 +467,34 @@
   new Vue({
     el: '#app',
     vuetify: new Vuetify(),
+
+    mounted() {
+      this.bo1 = this.bo_full
+    },
+
+    methods:{
+      toogleShowScvs() {
+        if (this.show_scvs){
+          this.bo1 = this.bo_full;
+        } else {
+          this.bo1 = this.bo_full.filter(function(item){
+            return item.is_worker == false;
+          })
+        }
+
+      }
+    },
     data: () => ({
+      show_scvs: true,
+      bo_headers: [
+        { text: 'Time', value: 'time'},
+        { text: 'Supply', value: 'supply' },
+        { text: 'Name', value: 'name' },
+      ],
+      bo_full: [
+        {"frame": 17.200000000000045, time: "0:00", "name": "Probe", "supply": 12, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 288.20000000000005, "time": "0:12", "name": "Probe", "supply": 13, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 383, "time": "0:17", "name": "Pylon", "supply": 14, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 559.2, "time": "0:24", "name": "Probe", "supply": 14, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 824.2, "time": "0:36", "name": "Probe", "supply": 16, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 846, "time": "0:37", "name": "Gateway", "supply": 16, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 931.2, "time": "0:41", "name": "Probe", "supply": 16, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 1038, "time": "0:46", "name": "Assimilator", "supply": 16, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 1182.2, "time": "0:52", "name": "Probe", "supply": 17, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 1453.2, "time": "1:04", "name": "Probe", "supply": 18, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 1724.2, "time": "1:16", "name": "Probe", "supply": 19, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 1998, "time": "1:29", "name": "CyberneticsCore", "supply": 20, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2028, "time": "1:30", "name": "Pylon", "supply": 20, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2057.2, "time": "1:31", "name": "Probe", "supply": 20, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2154, "time": "1:36", "name": "Assimilator", "supply": 21, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2336.2, "time": "1:44", "name": "Probe", "supply": 21, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2607.2, "time": "1:56", "name": "Probe", "supply": 22, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2801, "time": "2:05", "name": "Nexus", "supply": 23, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2878.2, "time": "2:08", "name": "Probe", "supply": 23, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2895, "time": "2:09", "name": "Pylon", "supply": 24, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 2945.0, "time": "2:11", "name": "Stalker", "supply": 24, "is_worker": false, "clock_position": 5, "is_chronoboosted": true}, {"frame": 3060.0, "time": "2:16", "name": "Warp Gate", "supply": 26, "is_worker": false, "clock_position": null, "is_chronoboosted": true}, {"frame": 3149.2, "time": "2:20", "name": "Probe", "supply": 26, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 3406, "time": "2:32", "name": "RoboticsFacility", "supply": 27, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 3420.2, "time": "2:32", "name": "Probe", "supply": 27, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 3659.0, "time": "2:43", "name": "Stalker", "supply": 27, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 3691.2, "time": "2:44", "name": "Probe", "supply": 29, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 3962.2, "time": "2:56", "name": "Probe", "supply": 30, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 3970, "time": "2:57", "name": "Gateway", "supply": 30, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 4233.2, "time": "3:08", "name": "Probe", "supply": 31, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 4514.2, "time": "3:21", "name": "Probe", "supply": 32, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 4713.2, "time": "3:30", "name": "Probe", "supply": 32, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 4791.6, "time": "3:33", "name": "Observer", "supply": 32, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 4909.2, "time": "3:39", "name": "Probe", "supply": 35, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 4941.0, "time": "3:40", "name": "Stalker", "supply": 35, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 4945.2, "time": "3:40", "name": "Probe", "supply": 35, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 5052.2, "time": "3:45", "name": "Probe", "supply": 38, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 5130, "time": "3:49", "name": "RoboticsBay", "supply": 39, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5257, "time": "3:54", "name": "ShieldBattery", "supply": 39, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5303.2, "time": "3:56", "name": "Probe", "supply": 40, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 5378.2, "time": "4:00", "name": "Probe", "supply": 40, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 5401.6, "time": "4:01", "name": "Observer", "supply": 40, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5461, "time": "4:03", "name": "Stalker", "supply": 42, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5509.2, "time": "4:05", "name": "Probe", "supply": 42, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 5579.2, "time": "4:09", "name": "Probe", "supply": 42, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 5592, "time": "4:09", "name": "Pylon", "supply": 42, "is_worker": false, "clock_position": 3, "is_chronoboosted": false}, {"frame": 5622.2, "time": "4:10", "name": "Probe", "supply": 46, "is_worker": true, "clock_position": 5, "is_chronoboosted": true}, {"frame": 5683, "time": "4:13", "name": "Assimilator", "supply": 46, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5730, "time": "4:15", "name": "Assimilator", "supply": 46, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5903, "time": "4:23", "name": "Stalker", "supply": 47, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5978.2, "time": "4:26", "name": "Probe", "supply": 49, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 5984.2, "time": "4:27", "name": "Probe", "supply": 49, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6130, "time": "4:33", "name": "Pylon", "supply": 51, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6196, "time": "4:36", "name": "Pylon", "supply": 51, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6205.4, "time": "4:37", "name": "Colossus", "supply": 51, "is_worker": false, "clock_position": 5, "is_chronoboosted": true}, {"frame": 6523.2, "time": "4:51", "name": "Probe", "supply": 57, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6526.2, "time": "4:51", "name": "Probe", "supply": 57, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6733, "time": "5:00", "name": "Stalker", "supply": 59, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6736, "time": "5:00", "name": "Stalker", "supply": 59, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6794.2, "time": "5:03", "name": "Probe", "supply": 59, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6880.2, "time": "5:07", "name": "Probe", "supply": 65, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6881, "time": "5:07", "name": "Pylon", "supply": 65, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 6961.0, "time": "5:10", "name": "Extended Thermal Lance", "supply": 65, "is_worker": false, "clock_position": null, "is_chronoboosted": false}, {"frame": 7065.2, "time": "5:15", "name": "Probe", "supply": 65, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7098, "time": "5:16", "name": "ShieldBattery", "supply": 65, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7151.2, "time": "5:19", "name": "Probe", "supply": 65, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7263.4, "time": "5:24", "name": "Colossus", "supply": 67, "is_worker": false, "clock_position": 5, "is_chronoboosted": true}, {"frame": 7336.2, "time": "5:27", "name": "Probe", "supply": 67, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7422.2, "time": "5:31", "name": "Probe", "supply": 74, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7484, "time": "5:34", "name": "Pylon", "supply": 74, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7551, "time": "5:37", "name": "Forge", "supply": 75, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7607.2, "time": "5:39", "name": "Probe", "supply": 75, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7693.2, "time": "5:43", "name": "Probe", "supply": 76, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7781, "time": "5:47", "name": "Stalker", "supply": 76, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 7784, "time": "5:47", "name": "Stalker", "supply": 76, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 8191, "time": "6:05", "name": "Gateway", "supply": 81, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 8225, "time": "6:07", "name": "Gateway", "supply": 81, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 8238.4, "time": "6:07", "name": "Colossus", "supply": 81, "is_worker": false, "clock_position": 5, "is_chronoboosted": true}, {"frame": 8462, "time": "6:17", "name": "Stalker", "supply": 85, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 8465, "time": "6:17", "name": "Stalker", "supply": 85, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 9229, "time": "6:52", "name": "Stalker", "supply": 78, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 9232, "time": "6:52", "name": "Stalker", "supply": 78, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 9277.4, "time": "6:54", "name": "Colossus", "supply": 78, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 9520.2, "time": "7:05", "name": "Probe", "supply": 78, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 9523.2, "time": "7:05", "name": "Probe", "supply": 78, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 9791.2, "time": "7:17", "name": "Probe", "supply": 76, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 9794.2, "time": "7:17", "name": "Probe", "supply": 76, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10062.2, "time": "7:29", "name": "Probe", "supply": 78, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10065.2, "time": "7:29", "name": "Probe", "supply": 78, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10079, "time": "7:29", "name": "Gateway", "supply": 78, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10156, "time": "7:33", "name": "Gateway", "supply": 80, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10217, "time": "7:36", "name": "Pylon", "supply": 80, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10269, "time": "7:38", "name": "Pylon", "supply": 80, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10333.2, "time": "7:41", "name": "Probe", "supply": 80, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10362, "time": "7:42", "name": "Stalker", "supply": 80, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10362, "time": "7:42", "name": "Stalker", "supply": 80, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10364, "time": "7:42", "name": "Stalker", "supply": 80, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10479.6, "time": "7:47", "name": "Warp Prism", "supply": 79, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10778, "time": "8:01", "name": "Stalker", "supply": 81, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10888.2, "time": "8:06", "name": "Probe", "supply": 83, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 10888.2, "time": "8:06", "name": "Probe", "supply": 83, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11118, "time": "8:16", "name": "Stalker", "supply": 85, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11121, "time": "8:16", "name": "Stalker", "supply": 85, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11122, "time": "8:16", "name": "Stalker", "supply": 85, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11172, "time": "8:18", "name": "Nexus", "supply": 85, "is_worker": false, "clock_position": 3, "is_chronoboosted": false}, {"frame": 11208, "time": "8:20", "name": "ShieldBattery", "supply": 91, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11240, "time": "8:21", "name": "Pylon", "supply": 91, "is_worker": false, "clock_position": 3, "is_chronoboosted": false}, {"frame": 11243, "time": "8:21", "name": "ShieldBattery", "supply": 91, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11276.4, "time": "8:23", "name": "Colossus", "supply": 91, "is_worker": false, "clock_position": 5, "is_chronoboosted": true}, {"frame": 11284, "time": "8:23", "name": "Pylon", "supply": 91, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11308, "time": "8:24", "name": "Pylon", "supply": 91, "is_worker": false, "clock_position": 3, "is_chronoboosted": false}, {"frame": 11373.2, "time": "8:27", "name": "Probe", "supply": 97, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11376.2, "time": "8:27", "name": "Probe", "supply": 97, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11831, "time": "8:48", "name": "Stalker", "supply": 95, "is_worker": false, "clock_position": 0, "is_chronoboosted": false}, {"frame": 11833, "time": "8:48", "name": "Stalker", "supply": 95, "is_worker": false, "clock_position": 0, "is_chronoboosted": false}, {"frame": 11835, "time": "8:48", "name": "Stalker", "supply": 95, "is_worker": false, "clock_position": 9, "is_chronoboosted": false}, {"frame": 11836, "time": "8:48", "name": "Stalker", "supply": 95, "is_worker": false, "clock_position": 9, "is_chronoboosted": false}, {"frame": 11908.2, "time": "8:51", "name": "Probe", "supply": 103, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 11911.2, "time": "8:51", "name": "Probe", "supply": 103, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 12179.2, "time": "9:03", "name": "Probe", "supply": 105, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 12182.2, "time": "9:03", "name": "Probe", "supply": 105, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 12288.6, "time": "9:08", "name": "Observer", "supply": 105, "is_worker": false, "clock_position": null, "is_chronoboosted": false}, {"frame": 12411.4, "time": "9:14", "name": "Colossus", "supply": 107, "is_worker": false, "clock_position": 5, "is_chronoboosted": true}, {"frame": 12450.2, "time": "9:15", "name": "Probe", "supply": 107, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 12558, "time": "9:20", "name": "TwilightCouncil", "supply": 114, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 12599, "time": "9:22", "name": "TwilightCouncil", "supply": 114, "is_worker": false, "clock_position": 5, "is_chronoboosted": false}, {"frame": 12609, "time": "9:22", "name": "Stalker", "supply": 114, "is_worker": false, "clock_position": 0, "is_chronoboosted": false}, {"frame": 12612, "time": "9:23", "name": "Stalker", "supply": 114, "is_worker": false, "clock_position": 9, "is_chronoboosted": false}, {"frame": 12670, "time": "9:25", "name": "Pylon", "supply": 118, "is_worker": false, "clock_position": 9, "is_chronoboosted": false}, {"frame": 13095.2, "time": "9:44", "name": "Probe", "supply": 108, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 13097.2, "time": "9:44", "name": "Probe", "supply": 108, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 13123, "time": "9:45", "name": "Stalker", "supply": 102, "is_worker": false, "clock_position": 9, "is_chronoboosted": false}, {"frame": 13126, "time": "9:45", "name": "Stalker", "supply": 102, "is_worker": false, "clock_position": 9, "is_chronoboosted": false}, {"frame": 13128, "time": "9:46", "name": "Stalker", "supply": 102, "is_worker": false, "clock_position": 9, "is_chronoboosted": false}, {"frame": 13129, "time": "9:46", "name": "Stalker", "supply": 102, "is_worker": false, "clock_position": 0, "is_chronoboosted": false}, {"frame": 13366.2, "time": "9:56", "name": "Probe", "supply": 108, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 13368.2, "time": "9:56", "name": "Probe", "supply": 108, "is_worker": true, "clock_position": 5, "is_chronoboosted": false}, {"frame": 13441.2, "time": "10:00", "name": "Probe", "supply": 111, "is_worker": true, "clock_position": 3, "is_chronoboosted": false}
+      ],
+      bo1: [],
       messages: [
         {
           from: 'You',
