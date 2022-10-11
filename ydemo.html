@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-card
+          class="mx-auto mt-12"
+          max-width="450"
+        >
+          <v-expansion-panels>
+            <v-expansion-panel
+              v-for="(item,i) in items"
+              :key="i"
+            >
+              <v-expansion-panel-header>
+                <v-img
+                  :src="item.image"
+                  class="mr-4"
+                  max-width="64"
+                  min-width="64"
+                ></v-img>
+
+                <v-list-item-content>
+                  <span
+                    class="text-uppercase font-weight-regular text-caption"
+                    v-text="item.category"
+                  ></span>
+
+                  <div v-text="item.title"></div>
+                </v-list-item-content>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-action>
+                      <v-icon>mdi-phone</v-icon>
+                    </v-list-item-action>
+
+                    <v-list-item-content>
+                      <v-list-item-title>+7 (444) 555-1234</v-list-item-title>
+                    </v-list-item-content>
+                    <v-list-item-action>
+                      <v-icon>mdi-message-text</v-icon>
+                    </v-list-item-action>
+                  </v-list-item>
+
+                  <v-divider inset></v-divider>
+
+                  <v-list-item>
+                    <v-list-item-action>
+                      <v-icon>mdi-email</v-icon>
+                    </v-list-item-action>
+
+                    <v-list-item-content>
+                      <v-list-item-title>email@email.com</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+
+                  <v-divider inset></v-divider>
+
+                  <v-list-item>
+                    <v-list-item-action>
+                      <v-icon>mdi-map-marker</v-icon>
+                    </v-list-item-action>
+
+                    <v-list-item-content>
+                      <v-list-item-title>Moscow, Kantima 776716</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+                <v-btn
+                  v-for="icon in icons"
+                  :key="icon"
+                  class="mx-4"
+                  dark
+                  icon
+                >
+                  <v-icon size="24px">
+                    {{ icon }}
+                  </v-icon>
+                </v-btn>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-card>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<!--   <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+    })
+  </script> -->
+</body>
+</html>
+
+<script>
+  var demo = new Vue({
+    el: '#app',
+    vuetify: new Vuetify({
+      theme: { dark: true },
+    }),
+
+    data: () => ({
+      icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
+      items: [
+        {
+          image: 'https://cdn-images-1.medium.com/max/1024/1*9C9hLji68wV373tk8okLYA.jpeg',
+          title: 'Ткани, полотна',
+          category: 'Merboy Tekstil',
+          keyword: 'Drinks',
+          icons: [
+            'mdi-facebook',
+            'mdi-twitter',
+            'mdi-linkedin',
+            'mdi-instagram',
+          ],
+        },
+        {
+          image: 'https://cdn-images-1.medium.com/max/1024/1*BBNtYUieAqHoXKjiJ2mMjQ.png',
+          title: 'Резинка, фурнитура',
+          category: 'Taskinteks',
+          keyword: 'Phones',
+        },
+        {
+          image: 'https://cdn-images-1.medium.com/max/1024/1*rTEtei1UEmNqbq6evRsExw.jpeg',
+          title: 'Бюро переводов, услуги по переводу',
+          category: 'Academy Tekstil',
+          keyword: 'Social',
+        },
+        {
+          image: 'https://cdn-images-1.medium.com/max/1024/1*FD2nkJewVeQnGf0ommQfrw.jpeg',
+          title: 'Перевозка, таможенное оформление, все виды услуг на таможне Грузия-Турция',
+          category: 'Ijnesa Global',
+          keyword: 'Military',
+        }
+        // {
+        //   image: 'https://cdn-images-1.medium.com/max/1024/1*eogFpsVgNzXQLCVgFzT_-A.jpeg',
+        //   title: 'Degrees of Freedom and Sudoko',
+        //   category: 'Travel',
+        //   keyword: 'Social',
+        // },
+      ],
+      items2: [
+        {
+          action: 'mdi-ticket',
+          image: 'https://cdn-images-1.medium.com/max/1024/1*BBNtYUieAqHoXKjiJ2mMjQ.png',
+          title: 'Резинка, фурнитура',
+          category: 'Taskinteks',
+          items: [{ title: 'List Item' }],
+          // title: 'Attractions',
+        },
+        {
+          image: 'https://cdn-images-1.medium.com/max/1024/1*9C9hLji68wV373tk8okLYA.jpeg',
+          title: 'Ткани, полотна',
+          category: 'Merboy Tekstil',
+          action: 'mdi-silverware-fork-knife',
+          // active: true,
+          items: [
+            { title: 'Breakfast & brunch' },
+            { title: 'New American' },
+            { title: 'Sushi' },
+          ],
+          // title: 'Dining',
+        },
+        {
+          image: 'https://cdn-images-1.medium.com/max/1024/1*rTEtei1UEmNqbq6evRsExw.jpeg',
+          title: 'Бюро переводов, услуги по переводу',
+          category: 'Academy Tekstil',
+          action: 'mdi-school',
+          items: [{ title: 'List Item' }],
+          // title: 'Education',
+        },
+        {
+          image: 'https://cdn-images-1.medium.com/max/1024/1*FD2nkJewVeQnGf0ommQfrw.jpeg',
+          title: 'Перевозка, таможенное оформление, все виды услуг на таможне Грузия-Турция',
+          category: 'Ijnesa Global',
+          action: 'mdi-human-male-female-child',
+          items: [{ title: 'List Item' }],
+          // title: 'Family',
+        },
+        // {
+        //   action: 'mdi-bottle-tonic-plus',
+        //   items: [{ title: 'List Item' }],
+        //   title: 'Health',
+        // },
+        // {
+        //   action: 'mdi-briefcase',
+        //   items: [{ title: 'List Item' }],
+        //   title: 'Office',
+        // },
+        // {
+        //   action: 'mdi-tag',
+        //   items: [{ title: 'List Item' }],
+        //   title: 'Promotions',
+        // },
+      ],
+      search: '',
+    }),
+
+    computed: {
+      keywords () {
+        if (!this.search) return []
+
+        const keywords = []
+
+        for (const search of this.searching) {
+          keywords.push(search.keyword)
+        }
+
+        return keywords
+      },
+      searching () {
+        if (!this.search) return this.items
+
+        const search = this.search.toLowerCase()
+
+        return this.items.filter(item => {
+          const text = item.title.toLowerCase()
+
+          return text.indexOf(search) > -1
+        })
+      },
+    },
+  })
+
+  // const searching = []
+  // const keywords = [
+  //       {
+  //         image: 'https://cdn-images-1.medium.com/max/1024/1*9C9hLji68wV373tk8okLYA.jpeg',
+  //         title: 'TBI’s 5 Best: SF Mocktails to Finish Dry January Strong',
+  //         category: 'Travel',
+  //         keyword: 'Drinks',
+
+  //       },
+  //       {
+  //         image: 'https://cdn-images-1.medium.com/max/1024/1*BBNtYUieAqHoXKjiJ2mMjQ.png',
+  //         title: 'PWAs on iOS 12.2 beta: the good, the bad, and the “not sure yet if good”',
+  //         category: 'Technology',
+  //         keyword: 'Phones',
+  //       },
+  //       {
+  //         image: 'https://cdn-images-1.medium.com/max/1024/1*rTEtei1UEmNqbq6evRsExw.jpeg',
+  //         title: 'How to Get Media Mentions for Your Business',
+  //         category: 'Media',
+  //         keyword: 'Social',
+  //       },
+  //       {
+  //         image: 'https://cdn-images-1.medium.com/max/1024/1*FD2nkJewVeQnGf0ommQfrw.jpeg',
+  //         title: 'The Pitfalls Of Outsourcing Self-Awareness To Artificial Intelligence',
+  //         category: 'Technology',
+  //         keyword: 'Military',
+  //       },
+  //       {
+  //         image: 'https://cdn-images-1.medium.com/max/1024/1*eogFpsVgNzXQLCVgFzT_-A.jpeg',
+  //         title: 'Degrees of Freedom and Sudoko',
+  //         category: 'Travel',
+  //         keyword: 'Social',
+  //       },
+  //     ]
+</script>
